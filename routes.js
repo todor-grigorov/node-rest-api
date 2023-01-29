@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const usersController = require('./controllers/usersController');
+const authController = require('./controllers/authController');
 const movieController = require('./controllers/movieController');
 
-router.use('/users', usersController);
+router.use('/auth', authController);
 router.use('/movie', movieController);
 
 module.exports = router;
