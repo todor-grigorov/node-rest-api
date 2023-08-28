@@ -10,12 +10,13 @@ const app = express();
 //#region Middlewares
 app.use(cors());
 app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 //#endregion
 
 app.get('/', (req, res) => {
     res.json({ message: 'It\s working!' });
 });
 
-app.use(routes);
+app.use('/api', routes);
 
 app.listen(port, console.log.bind(console, `Server is listening on port ${port}`));
