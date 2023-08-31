@@ -11,7 +11,7 @@ exports.connect = (app) => {
     mongoose.Promise = global.Promise;
     console.log("MongoDB connection with retry");
     mongoose
-      .connect(process.env.MONGODB_URI, options)
+      .connect('mongodb://localhost:27017/softuni-movies', options)
       .then(() => {
         console.log("MongoDB is connected");
         app.emit("ready");
