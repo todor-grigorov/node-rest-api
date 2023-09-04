@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const Movie = require('../models/Movie');
 
 router.post('/', (req, res) => {
     console.log(req.body);
