@@ -4,7 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const routes = require('./routes');
 const db = require("./db");
-const { auth } = require('./middlewares/auth');
+const {auth} = require('./middlewares/auth');
 
 const port = 5000;
 const app = express();

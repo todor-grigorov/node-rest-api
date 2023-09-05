@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-module.auth = function(req, res, next) {
+const auth = (req, res, next) => {
     let authorizationHeader = req.get('Authorization');
 
     if (authorizationHeader) {
@@ -15,6 +15,11 @@ module.auth = function(req, res, next) {
     next();
 };
 
-module.isAuth = function(req, res, next) {
+const isAuth = (req, res, next) => {
 
 };
+
+module.exports = {
+    isAuth,
+    auth,
+}
