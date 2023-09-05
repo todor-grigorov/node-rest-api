@@ -6,7 +6,7 @@ const auth = (req, res, next) => {
     if (authorizationHeader) {
         let token = authorizationHeader.split(' ')[1];
 
-        jwt.verify(toke, 'SOMESUPERSECRET')
+        jwt.verify(token, 'SOMESUPERSECRET')
             .then(decoded => {
                 req.user = decoded;
             })
