@@ -10,7 +10,8 @@ const auth = (req, res, next) => {
            const decoded = jwt.verify(token, 'SOMESUPERSECRET');
            req.user = decoded;
         } catch (error) {
-            console.error(error);            
+            console.error('Invalid token!');
+            return next();            
         }
     }
 
@@ -18,7 +19,11 @@ const auth = (req, res, next) => {
 };
 
 const isAuth = (req, res, next) => {
+    if (!req.user) {
+        res.status(401).end();
+    }
 
+    next();
 };
 
 module.exports = {
