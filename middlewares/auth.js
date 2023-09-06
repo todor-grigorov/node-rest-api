@@ -6,10 +6,12 @@ const auth = (req, res, next) => {
     if (authorizationHeader) {
         let token = authorizationHeader.split(' ')[1];
 
-        jwt.verify(token, 'SOMESUPERSECRET')
-            .then(decoded => {
-                req.user = decoded;
-            })
+        try {
+           const decoded = jwt.verify(token, 'SOMESUPERSECRET');
+           req.user = decoded;
+        } catch (error) {
+            console.error(error);            
+        }
     }
 
     next();
