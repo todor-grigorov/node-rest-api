@@ -1,15 +1,20 @@
-const router = require('express').Router();
-const Movie = require('../models/Movie');
+const router = require("express").Router();
+const Movie = require("../models/Movie");
 
-router.post('/', (req, res) => {
-    console.log(req.body);
+router.get("/", async (req, res) => {
+  let movies = await Movie.find();
 
-    let movie = new Movie(req.body);
+  res.json(movies);
+});
 
-    movie.save()
-         .then(createdMovie => {
-            res.status(201).json({_id: createdMovie._id});
-         })
+router.post("/", (req, res) => {
+  console.log(req.body);
+
+  let movie = new Movie(req.body);
+
+  movie.save().then((createdMovie) => {
+    res.status(201).json({ _id: createdMovie._id });
+  });
 });
 
 module.exports = router;
