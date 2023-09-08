@@ -1,13 +1,14 @@
 const router = require("express").Router();
 const Movie = require("../models/Movie");
+const { isAuth } = require("../middlewares/auth");
 
-router.get("/", async (req, res) => {
+router.get("/", isAuth, async (req, res) => {
   let movies = await Movie.find();
 
   res.json(movies);
 });
 
-router.post("/", (req, res) => {
+router.post("/", isAuth, (req, res) => {
   console.log(req.body);
 
   let movie = new Movie(req.body);
