@@ -4,7 +4,7 @@ const User = require("../models/User");
 
 router.post("/register", (req, res) => {
   console.log(req.body);
-  //TODO: Check if user exists
+  // Check if user exists
 
   let user = new User(req.body);
 
@@ -14,7 +14,7 @@ router.post("/register", (req, res) => {
   });
 });
 
-router.post("/login", (req, res) => {
+router.post("/login", (req, res, next) => {
   const { username, password } = req.body;
 
   User.findOne({ username, password })
